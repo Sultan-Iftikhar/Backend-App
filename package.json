@@ -4,7 +4,7 @@
   "description": "a backend app training",
   "main": "index.js",
   "scripts": {
-    "start" : "npm start index.js"
+    "start" : "node index.js"
   },
   "keywords": [
     "javascript",
