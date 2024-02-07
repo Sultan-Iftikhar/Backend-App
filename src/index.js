@@ -2,6 +2,7 @@
 import dotenv from "dotenv"
 
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
 dotenv.config(
     {
@@ -9,16 +10,21 @@ dotenv.config(
     }
 )
 
-connectDB();
-
-
-
-
-
-
-
-
-
+connectDB()
+.then(
+    ()=>{
+        app.listen(process.env.PORT || 8000, ()=>{
+            console.log(`App is listning on PORT : ${process.env.PORT}`);
+        })
+    }
+)
+.catch((error)=>{
+    app.on('error',(error)=>{
+        console.log("MONGO DataBase Connection ERROR : ", error)
+        throw error;
+    })
+}
+)
 
 
 // import mongoose from "mongoose";
